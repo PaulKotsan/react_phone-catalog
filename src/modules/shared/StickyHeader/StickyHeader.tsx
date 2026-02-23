@@ -131,7 +131,7 @@ export const StickyHeader = () => {
 
       <div className={styles.stickyHeader__Container}>
         <NavLink to="/" className={styles.stickyHeader__Logo}>
-          <img src={'img/new/LogoDarkTheme.svg'} />
+          <img src={`${import.meta.env.BASE_URL}img/new/LogoDarkTheme.svg`} alt="Logo" />
         </NavLink>
 
         <div className={styles.stickyHeader__Body}>

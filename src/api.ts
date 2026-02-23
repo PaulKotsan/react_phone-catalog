@@ -25,12 +25,12 @@ export function useDevices() {
 
   useEffect(() => {
     setLoading(true);
-    getData('/api/products.json')
+    getData(`${import.meta.env.BASE_URL}api/products.json`)
       .then(data => {
         setDevices(data ?? []);
       })
       .catch(error => {
-        console.error(error.message);
+        console.error(error?.message);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -48,13 +48,12 @@ export function useDevicesFamily(
   useEffect(() => {
     if (!namespaceId) {
       setLoading(false);
-
       return;
     }
 
     setLoading(true);
     async function loadDevices() {
-      const details = await getData(`/api/${productCategory}.json`);
+      const details = await getData(`${import.meta.env.BASE_URL}api/${productCategory}.json`);
       const list = details
         ? [...details].filter(d => d.namespaceId === namespaceId)
         : [];
@@ -76,14 +75,13 @@ export function useDevice(productId?: string) {
   useEffect(() => {
     if (!productId) {
       setLoading(false);
-
       return;
     }
 
     setLoading(true);
     async function loadDevice() {
       try {
-        const products = await getData('/api/products.json');
+        const products = await getData(`${import.meta.env.BASE_URL}api/products.json`); // 👈 prepend base
         const product = products?.find(
           (p: { itemId: string }) => p.itemId === productId,
         );
@@ -91,11 +89,10 @@ export function useDevice(productId?: string) {
         if (!product) {
           setDevice(null);
           setLoading(false);
-
           return;
         }
 
-        const details = await getData(`/api/${product.category}.json`);
+        const details = await getData(`${import.meta.env.BASE_URL}api/${product.category}.json`);
         const found = details?.find((d: DeviceDetails) => d.id === productId);
 
         setDevice(found ?? null);
