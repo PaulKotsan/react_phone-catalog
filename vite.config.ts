@@ -7,7 +7,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        loadPaths: ['./src'],
+        loadPaths: ['./react_phone-catalog'],
       },
     },
   },
