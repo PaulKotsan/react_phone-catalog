@@ -50,19 +50,19 @@ export const PicturesSlider = () => {
       >
         <SwiperSlide className={styles.swiperSlide}>
           <img
-            src={`${import.meta.env.BASE_URL}img/new/pantone-color-chip.webp`}
+            src={`img/new/pantone-color-chip.webp`}
             className={styles.swiperSlide__Image}
           />
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
           <img
-            src={`${import.meta.env.BASE_URL}img/new/blue-color-chip.webp`}
+            src={`img/new/blue-color-chip.webp`}
             className={styles.swiperSlide__Image}
           />
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
           <img
-            src={`${import.meta.env.BASE_URL}img/new/orange-color-chip.webp`}
+            src={`img/new/orange-color-chip.webp`}
             className={styles.swiperSlide__Image}
           />
         </SwiperSlide>

@@ -25,7 +25,7 @@ export function useDevices() {
 
   useEffect(() => {
     setLoading(true);
-    getData(`${import.meta.env.BASE_URL}api/products.json`)
+    getData('api/products.json')
       .then(data => {
         setDevices(data ?? []);
       })
@@ -54,9 +54,7 @@ export function useDevicesFamily(
 
     setLoading(true);
     async function loadDevices() {
-      const details = await getData(
-        `${import.meta.env.BASE_URL}api/${productCategory}.json`,
-      );
+      const details = await getData(`api/${productCategory}.json`);
       const list = details
         ? [...details].filter(d => d.namespaceId === namespaceId)
         : [];
@@ -85,9 +83,7 @@ export function useDevice(productId?: string) {
     setLoading(true);
     async function loadDevice() {
       try {
-        const products = await getData(
-          `${import.meta.env.BASE_URL}api/products.json`,
-        ); // 👈 prepend base
+        const products = await getData('api/products.json');
         const product = products?.find(
           (p: { itemId: string }) => p.itemId === productId,
         );
@@ -99,9 +95,7 @@ export function useDevice(productId?: string) {
           return;
         }
 
-        const details = await getData(
-          `${import.meta.env.BASE_URL}api/${product.category}.json`,
-        );
+        const details = await getData(`api/${product.category}.json`);
         const found = details?.find((d: DeviceDetails) => d.id === productId);
 
         setDevice(found ?? null);

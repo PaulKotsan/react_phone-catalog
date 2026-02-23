@@ -28,7 +28,7 @@ export const ShopByCategory: React.FC<ShopByCategoryProps> = ({
           className={styles.shopByCategory__ImageContainer}
         >
           <img
-            src="/img/new/Phones.svg"
+            src="img/new/Phones.svg"
             className={styles.shopByCategory__Image}
           />
           <h3>Mobile phones</h3>
@@ -39,7 +39,7 @@ export const ShopByCategory: React.FC<ShopByCategoryProps> = ({
           className={styles.shopByCategory__ImageContainer}
         >
           <img
-            src="/img/new/Tablets.svg"
+            src="img/new/Tablets.svg"
             className={styles.shopByCategory__Image}
           />
           <h3>Tablets</h3>
@@ -50,7 +50,7 @@ export const ShopByCategory: React.FC<ShopByCategoryProps> = ({
           className={styles.shopByCategory__ImageContainer}
         >
           <img
-            src="/img/new/Accessories.svg"
+            src="img/new/Accessories.svg"
             className={styles.shopByCategory__Image}
           />
           <h3>Accessories</h3>
