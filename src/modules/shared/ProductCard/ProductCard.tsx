@@ -55,7 +55,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ device }) => {
       >
         <div>
           <img
-            src={`${import.meta.env.BASE_URL}${device.image}`}
+            src={device.image}
             className={styles.productCard__Image}
           />
         </div>
