@@ -54,7 +54,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ device }) => {
         className={styles.productCard__Upper}
       >
         <div>
-          <img src={`${import.meta.env.BASE_URL}${device.image}`} className={styles.productCard__Image} />
+          <img
+            src={`${import.meta.env.BASE_URL}${device.image}`}
+            className={styles.productCard__Image}
+          />
         </div>
         <h3 className={styles.productCard__Title}>{device.name}</h3>
         <div className={styles.productCard__PriceContainer}>
