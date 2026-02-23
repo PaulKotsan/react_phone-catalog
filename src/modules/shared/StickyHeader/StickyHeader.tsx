@@ -114,7 +114,7 @@ export const StickyHeader = () => {
           </div>
         </div>
         <div className={burgerStyle.burgerMenu__Footer}>
-          {headerIcons.map(icon => (
+          {headerIcons.map((icon, index) => (
             <NavLink
               to={icon.path}
               key={index}
@@ -135,10 +135,10 @@ export const StickyHeader = () => {
         </NavLink>
 
         <div className={styles.stickyHeader__Body}>
-          {headerItems.map(item => (
+          {headerItems.map((item, index) => (
             <NavLink
               to={item.path}
-              key={item.name}
+              key={index}
               className={
                 isActiveFor(item.path)
                   ? styles.stickyHeader__LinkActive
