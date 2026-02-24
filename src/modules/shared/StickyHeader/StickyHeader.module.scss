@@ -104,6 +104,7 @@
   &__Lang {
     display: flex;
     align-items: center;
+    padding: v.$logo-padding-desktop;
     gap: v.$gap-xs;
   }
 
@@ -154,7 +155,7 @@
   }
 }
 
-@media (max-width: v.$bp-640) {
+@media (max-width: v.$bp-850) {
   .stickyHeader {
     &__Body {
       display: none;

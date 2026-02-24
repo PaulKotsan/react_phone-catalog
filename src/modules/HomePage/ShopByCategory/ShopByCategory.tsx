@@ -31,8 +31,14 @@ export const ShopByCategory: React.FC<ShopByCategoryProps> = ({
             src="img/new/Phones.svg"
             className={styles.shopByCategory__Image}
           />
-          <h3>Mobile phones</h3>
-          <p>{numberOfPhones} models</p>
+          <div className={styles.shopByCategory__SectionText}>
+            <h3 className={styles.shopByCategory__SectionTitle}>
+              Mobile phones
+            </h3>
+            <p className={styles.shopByCategory__SectionParagraph}>
+              {numberOfPhones} models
+            </p>
+          </div>
         </NavLink>
         <NavLink
           to="/catalog/tablets"
@@ -42,8 +48,12 @@ export const ShopByCategory: React.FC<ShopByCategoryProps> = ({
             src="img/new/Tablets.svg"
             className={styles.shopByCategory__Image}
           />
-          <h3>Tablets</h3>
-          <p>{numberOfTablets} models</p>
+          <div className={styles.shopByCategory__SectionText}>
+            <h3 className={styles.shopByCategory__SectionTitle}>Tablets</h3>
+            <p className={styles.shopByCategory__SectionParagraph}>
+              {numberOfTablets} models
+            </p>
+          </div>
         </NavLink>
         <NavLink
           to="/catalog/accessories"
@@ -53,8 +63,12 @@ export const ShopByCategory: React.FC<ShopByCategoryProps> = ({
             src="img/new/Accessories.svg"
             className={styles.shopByCategory__Image}
           />
-          <h3>Accessories</h3>
-          <p>{numberOfAccessories} models</p>
+          <div className={styles.shopByCategory__SectionText}>
+            <h3 className={styles.shopByCategory__SectionTitle}>Accessories</h3>
+            <p className={styles.shopByCategory__SectionParagraph}>
+              {numberOfAccessories} models
+            </p>
+          </div>
         </NavLink>
       </div>
     </div>

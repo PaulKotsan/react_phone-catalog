@@ -99,19 +99,6 @@ export const StickyHeader = () => {
               {t(item.key)}
             </NavLink>
           ))}
-          <div className={burgerStyle.burgerMenu__Lang}>
-            {(['en', 'uk'] as Lang[]).map(l => (
-              <button
-                key={l}
-                type="button"
-                className={burgerStyle.burgerMenu__LangBtn}
-                data-active={lang === l}
-                onClick={() => setLang(l)}
-              >
-                {l.toUpperCase()}
-              </button>
-            ))}
-          </div>
         </div>
         <div className={burgerStyle.burgerMenu__Footer}>
           {headerIcons.map((icon, index) => (

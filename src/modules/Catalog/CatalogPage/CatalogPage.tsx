@@ -11,14 +11,22 @@ import { useParams } from 'react-router-dom';
 import { ProductType } from '../../types';
 import { getDevicesFromCategory } from '../../hooks/utilHooks';
 import { useLanguage } from '../../../contexts/LanguageContext';
+import { NotFoundPage } from '../../shared/NotFoundPage';
 
 const SKELETON_COUNT = 8;
+const validTypes = ['phones', 'tablets', 'accessories'];
 
 export const CatalogPage = () => {
   const { devices, loading } = useDevices();
   const { type } = useParams<{ type: ProductType }>();
   const numberOfDevices = type ? getDevicesFromCategory(devices, type) : [];
   const { t } = useLanguage();
+
+  if (type) {
+    if (!validTypes.includes(type)) {
+      return <NotFoundPage />;
+    }
+  }
 
   if (loading) {
     return (

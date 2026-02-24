@@ -43,7 +43,7 @@ export const CartPage = () => {
         </>
       ) : (
         <img
-          src="/img/cart-is-empty.png"
+          src="img/cart-is-empty.png"
           alt={t('cart.emptyAlt')}
           className={globalStyle.emptyStateImage}
         />

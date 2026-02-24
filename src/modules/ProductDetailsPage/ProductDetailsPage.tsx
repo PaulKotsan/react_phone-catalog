@@ -13,6 +13,9 @@ import { ProductSlider } from '../HomePage/ProductSlider/ProductSlider';
 import { getSuggestedProducts } from '../hooks/utilHooks';
 import { BackButton } from '../shared/BackButton';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { ProductNotFoundPage } from '../shared/ProductNotFoundPage';
+
+const validCategories = ['phones', 'tablets', 'accessories'];
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -36,8 +39,12 @@ export const ProductDetailsPage = () => {
     );
   }
 
-  if (!device) {
-    return null;
+  if (
+    !device ||
+    !device.category ||
+    !validCategories.includes(device.category)
+  ) {
+    return <ProductNotFoundPage />;
   }
 
   const handleVariantChange = (nextColor: string, nextCapacity: string) => {
@@ -54,13 +61,10 @@ export const ProductDetailsPage = () => {
     }
   };
 
-  const onColorChange = (color: string) => {
+  const onColorChange = (color: string) =>
     handleVariantChange(color, device.capacity);
-  };
-
-  const onCapacityChange = (capacity: string) => {
+  const onCapacityChange = (capacity: string) =>
     handleVariantChange(device.color, capacity);
-  };
 
   const suggestedDevices = getSuggestedProducts(
     device.id,

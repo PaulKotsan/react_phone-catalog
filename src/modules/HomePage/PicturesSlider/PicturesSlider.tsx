@@ -50,19 +50,19 @@ export const PicturesSlider = () => {
       >
         <SwiperSlide className={styles.swiperSlide}>
           <img
-            src={`img/new/pantone-color-chip.webp`}
+            src={`img/banner-phones.png`}
             className={styles.swiperSlide__Image}
           />
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
           <img
-            src={`img/new/blue-color-chip.webp`}
+            src={`img/banner-tablets.png`}
             className={styles.swiperSlide__Image}
           />
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
           <img
-            src={`img/new/orange-color-chip.webp`}
+            src={`img/banner-accessories.png`}
             className={styles.swiperSlide__Image}
           />
         </SwiperSlide>

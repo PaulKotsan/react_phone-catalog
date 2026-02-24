@@ -32,7 +32,7 @@ export const Footer = () => {
       <div className={styles.footer__Body}>
         <div className={styles.footer__Logo}>
           <NavLink to="/">
-            <img src="/img/new/LogoDarkTheme.svg" alt="" />
+            <img src="img/new/LogoDarkTheme.svg" alt="" />
           </NavLink>
         </div>
         <div className={styles.footer__Navigation}>

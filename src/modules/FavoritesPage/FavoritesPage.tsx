@@ -31,7 +31,7 @@ export const FavoritesPage = () => {
         </>
       ) : (
         <img
-          src="/img/cart-is-empty.png"
+          src="img/cart-is-empty.png"
           alt={t('favorites.emptyAlt')}
           className={globalStyle.emptyStateImage}
         />

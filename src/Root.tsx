@@ -6,6 +6,7 @@ import { CatalogPage } from './modules/Catalog/CatalogPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 import { CartPage } from './modules/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
+import { NotFoundPage } from './modules/shared/NotFoundPage';
 
 export const Root = () => (
   <HashRouter>
@@ -16,9 +17,8 @@ export const Root = () => (
         <Route path="/:category/:productId" element={<ProductDetailsPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="favorites" element={<FavoritesPage />} />
-
-        <Route path="*" element={<img src="/img/page-not-found.png" />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </HashRouter>
 );
