@@ -14,6 +14,14 @@
     justify-content: space-around;
   }
 
+  &__Logo {
+    transition: transform 0.2s ease-in;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
   &__Navigation {
     display: flex;
     gap: v.$footer-gap;

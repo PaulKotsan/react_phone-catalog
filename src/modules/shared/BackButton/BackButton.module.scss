@@ -20,6 +20,12 @@
     height: 15px;
     color: v.$color-gray;
     font-family: v.$font-base;
+
+    transition: color 0.2s ease-in;
+
+    &:hover {
+      color: v.$color-primary;
+    }
   }
 
   &__Icon {

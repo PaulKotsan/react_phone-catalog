@@ -41,9 +41,10 @@
   }
 
   &__Button {
+    box-sizing: border-box;
     background-color: v.$color-bg-dark;
     border: none;
-    width: 48px;
+    width: 35.42px; // The most magic number i've ever seen, only one that works tho
     transition: background-color v.$transition-fast;
     cursor: pointer;
 

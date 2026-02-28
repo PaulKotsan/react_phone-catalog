@@ -21,18 +21,25 @@
   }
 
   &__Button {
-    background-color: v.$color-bg-dark;
-    border: none;
+    box-sizing: border-box;
+    background-color: v.$color-white;
+    border: 1px solid v.$color-border-light;
     width: 38px;
     height: 38px;
     cursor: pointer;
-    transition: opacity v.$transition-opacity;
+    transition: opacity v.$transition-opacity,
+      background-color 0.2s ease-in;
 
     &Icon {
-      color: v.$color-white;
+      color: v.$color-bg-dark;
+    }
+
+    &:hover {
+      background-color: v.$color-border-light;
     }
 
     &:disabled {
+      cursor: not-allowed;
       opacity: 0.4;
     }
   }

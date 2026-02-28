@@ -8,10 +8,10 @@ import styles from './ProductSlider.module.scss';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { ProductCard } from '../../shared/ProductCard/ProductCard';
-import { DeviceType } from '../../types';
+import { Device } from '../../types';
 
 interface ProductSliderProps {
-  devicesForDisplay: DeviceType[];
+  devicesForDisplay: Device[];
   title?: string;
   type: 'simple' | 'full';
 }
@@ -38,15 +38,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
   const [slidesPerView, setSlidesPerView] = useState(() =>
     getSlidesPerView(window.innerWidth),
   );
-
-  // Not needed, but nice to have
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -97,6 +88,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
           }}
           spaceBetween={20}
           slidesPerView={slidesPerView}
+          slidesPerGroup={slidesPerView}
           onSwiper={swiper => {
             swiperRef.current = swiper;
             setIsBeginning(swiper.isBeginning);

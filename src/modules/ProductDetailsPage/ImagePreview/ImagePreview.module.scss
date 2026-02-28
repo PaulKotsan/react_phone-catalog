@@ -23,9 +23,14 @@
     box-sizing: border-box;
     list-style: none;
     border: 1px solid v.$color-border-light;
+    transition: border-color 0.2s ease-in;
 
     &Active {
       border: 1px solid v.$color-primary-alt;
+    }
+
+    &:hover {
+      border-color: v.$color-primary-alt;
     }
   }
 

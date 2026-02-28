@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './SelectionField.module.scss';
+import { useSearchParams } from 'react-router-dom';
 
 interface SelectionFieldProps {
   selectionType: 'itemsNumber' | 'deviceAge';
@@ -10,8 +11,14 @@ export const SelectionField: React.FC<SelectionFieldProps> = ({
   selectionType,
   onChange,
 }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const tabs = searchParams.get('tabs');
+  const sort = searchParams.get('sort');
+
   const [optionsList, setOptionsList] = useState<string[]>([]);
-  const [value, setValue] = useState<string>('16');
+  const [value, setValue] = useState<string>('8');
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = e.target.value;
@@ -23,10 +30,16 @@ export const SelectionField: React.FC<SelectionFieldProps> = ({
   useEffect(() => {
     if (selectionType === 'itemsNumber') {
       setOptionsList(['4', '8', '16', '32', '64']);
+      if (tabs) {
+        setValue(tabs);
+      }
     } else {
       setOptionsList(['Newest', 'Alphabetically', 'Cheapest']);
+      if (sort) {
+        setValue(sort);
+      }
     }
-  }, [selectionType]);
+  }, [selectionType, tabs, sort]);
 
   return (
     <select

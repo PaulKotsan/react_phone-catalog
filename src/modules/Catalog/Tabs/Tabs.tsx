@@ -26,7 +26,7 @@ export const Tabs: React.FC<TabsProps> = ({ allDevices }) => {
   );
 
   const tabsParam = searchParams.get('tabs');
-  const pageSize = tabsParam ? Number(tabsParam) : 16;
+  const pageSize = tabsParam ? Number(tabsParam) : 8;
 
   // Basics.
   const totalPages = Math.ceil(sortedDevices.length / pageSize);
@@ -83,8 +83,10 @@ export const Tabs: React.FC<TabsProps> = ({ allDevices }) => {
   }
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [pageSize]);
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages || 1);
+    }
+  }, [currentPage, pageSize, totalPages]);
 
   return (
     <div className={styles.tabs__Container}>
