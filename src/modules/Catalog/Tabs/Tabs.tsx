@@ -83,10 +83,8 @@ export const Tabs: React.FC<TabsProps> = ({ allDevices }) => {
   }
 
   useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(totalPages || 1);
-    }
-  }, [currentPage, pageSize, totalPages]);
+    setCurrentPage(1);
+  }, [type]);
 
   return (
     <div className={styles.tabs__Container}>

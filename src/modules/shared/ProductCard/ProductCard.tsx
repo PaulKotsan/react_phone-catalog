@@ -14,22 +14,24 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ device }) => {
-  const { addToCart } = useCart();
+  const { toggleCartItem } = useCart();
   const { toggleFavorites } = useFavorites();
   const { isInFavorites } = useFavorites();
 
   const inFavorites = isInFavorites(device.itemId);
+  const d = {
+    id: device.itemId,
+    name: device.name,
+    image: device.image,
+    color: device.color,
+    capacity: device.capacity,
+    category: device.category,
+    price: device.price,
+    quantity: 1,
+  };
 
   const handleAddToCart = () => {
-    addToCart({
-      name: device.name,
-      image: device.image,
-      id: device.itemId,
-      category: device.category,
-      price: device.price,
-      color: device.color,
-      capacity: device.capacity,
-    });
+    toggleCartItem(d);
   };
 
   const handleAddToFavorites = () => {
@@ -80,7 +82,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ device }) => {
         </div>
 
         <div className={styles.productCard__InteractionArea}>
-          <AddToCartButton onClick={handleAddToCart} />
+          <AddToCartButton onClick={handleAddToCart} device={d} />
           <button
             className={`${globalStyle.btnFavorites} ${styles.favoritesButton}`}
             onClick={handleAddToFavorites}

@@ -5,17 +5,49 @@ import { useLanguage } from '../../contexts/LanguageContext';
 
 import styles from './CartPage.module.scss';
 import globalStyle from '../../styles/index.module.scss';
+import { X } from 'lucide-react';
+import { useState } from 'react';
 
 export const CartPage = () => {
-  const { getFromCart } = useCart();
-  const { getTotal } = useCart();
+  const { getFromCart, removeFromCart, getTotal } = useCart();
   const { t } = useLanguage();
   const itemsInCart = getFromCart();
   const totalPrice = getTotal(itemsInCart).allPrice();
   const totalItems = getTotal(itemsInCart).Items();
+  const [popup, setPopup] = useState<boolean>(false);
+
+  const handleCheckout = () => {
+    itemsInCart.forEach(item => removeFromCart(item));
+    setPopup(true);
+  };
+
+  const closePopup = () => {
+    setPopup(false);
+  };
 
   return (
     <div className={styles.cartPage__Container}>
+      {popup && (
+        <div className={styles.cartPage__Overlay} onClick={closePopup}>
+          <div
+            className={styles.cartPage__Popup}
+            onClick={e => e.stopPropagation()}
+          >
+            <div className={styles.cartPage__PopupHeader}>
+              <X className={styles.cartPage__PopupClose} onClick={closePopup} />
+            </div>
+
+            <img
+              src="img/new/LogoLightTheme.svg"
+              className={styles.cartPage__PopupImage}
+            />
+
+            <div className={styles.cartPage__PopupContent}>
+              <h1>Thanks for your purchase!</h1>
+            </div>
+          </div>
+        </div>
+      )}
       {totalItems > 0 ? (
         <>
           <BackButton />
@@ -35,6 +67,7 @@ export const CartPage = () => {
               </div>
               <button
                 className={`${globalStyle.btnPrimary} ${styles.cartButton}`}
+                onClick={() => handleCheckout()}
               >
                 {t('cart.checkout')}
               </button>

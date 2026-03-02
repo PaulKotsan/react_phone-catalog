@@ -1,6 +1,53 @@
 @use 'styles/variables' as v;
 
 .cartPage {
+  &__Overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  &__Popup {
+    background-color: v.$color-white;
+    width: 50%;
+    max-width: 600px;
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+    &Header {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &Close {
+      cursor: pointer;
+    }
+
+    &Image {
+      display: flex;
+      align-self: center;
+      width: 40%;
+      height: 40%;
+      object-fit: fill;
+    }
+
+    &Content {
+      text-align: center;
+      font-family: v.$font-bold;
+    }
+  }
+
   &__Container {
     display: flex;
     flex-direction: column;

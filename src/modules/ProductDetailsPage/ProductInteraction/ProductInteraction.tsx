@@ -28,28 +28,25 @@ export const ProductInteraction: React.FC<ProductInteractionProps> = ({
     onCapacityChange(capacity);
   };
 
-  const { addToCart } = useCart();
   const { toggleFavorites } = useFavorites();
   const { isInFavorites } = useFavorites();
-  const { isInCart } = useCart();
+  const { toggleCartItem } = useCart();
 
   const { t } = useLanguage();
   const inFavorites = isInFavorites(deviceDetails.id);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const inCart = isInCart(deviceDetails.id);
+  const d = {
+    id: deviceDetails.id,
+    name: deviceDetails.name,
+    image: deviceDetails.images[0],
+    color: deviceDetails.color,
+    capacity: deviceDetails.capacity,
+    category: deviceDetails.category,
+    price: deviceDetails.priceDiscount,
+    quantity: 1,
+  };
 
   const handleAddToCart = () => {
-    const color = deviceDetails.color;
-    const capacity = deviceDetails.capacity;
-
-    addToCart({
-      name: deviceDetails.name,
-      image: deviceDetails.images?.[0] ?? '',
-      id: deviceDetails.id,
-      color,
-      capacity,
-      price: deviceDetails.priceDiscount,
-    });
+    toggleCartItem(d);
   };
 
   const handleAddToFavorites = () => {
@@ -126,7 +123,7 @@ export const ProductInteraction: React.FC<ProductInteractionProps> = ({
           <h3>${deviceDetails.priceRegular}</h3>
         </div>
         <div className={styles.buttonsContainer}>
-          <AddToCartButton onClick={handleAddToCart} />
+          <AddToCartButton onClick={handleAddToCart} device={d} />
           <button
             onClick={handleAddToFavorites}
             className={`${globalStyles.btnFavorites} ${styles.favoritesButton}`}
