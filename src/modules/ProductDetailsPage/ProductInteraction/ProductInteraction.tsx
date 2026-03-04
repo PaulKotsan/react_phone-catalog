@@ -8,6 +8,7 @@ import { useLanguage } from '../../../contexts/LanguageContext';
 import globalStyles from '../../../styles/index.module.scss';
 import { HeartButton } from '../../shared/HeartButton';
 import { AddToCartButton } from '../../shared/AddToCartButton';
+import { useSomeCrazyMove } from '../../hooks/utilHooks';
 
 interface ProductInteractionProps {
   deviceDetails: DeviceDetails;
@@ -34,6 +35,7 @@ export const ProductInteraction: React.FC<ProductInteractionProps> = ({
 
   const { t } = useLanguage();
   const inFavorites = isInFavorites(deviceDetails.id);
+
   const d = {
     id: deviceDetails.id,
     name: deviceDetails.name,
@@ -44,6 +46,9 @@ export const ProductInteraction: React.FC<ProductInteractionProps> = ({
     price: deviceDetails.priceDiscount,
     quantity: 1,
   };
+
+  // Crazy technical dept
+  const thatIsCrazySolution = useSomeCrazyMove(d.id);
 
   const handleAddToCart = () => {
     toggleCartItem(d);
@@ -119,8 +124,14 @@ export const ProductInteraction: React.FC<ProductInteractionProps> = ({
       </div>
       <div className={styles.bottomContainer}>
         <div className={styles.priceContainer}>
-          <h2>${deviceDetails.priceDiscount}</h2>
-          <h3>${deviceDetails.priceRegular}</h3>
+          {thatIsCrazySolution?.year === 2022 ? (
+            <h2>${deviceDetails.priceRegular}</h2>
+          ) : (
+            <>
+              <h2>${deviceDetails.priceDiscount}</h2>
+              <h3>${deviceDetails.priceRegular}</h3>
+            </>
+          )}
         </div>
         <div className={styles.buttonsContainer}>
           <AddToCartButton onClick={handleAddToCart} device={d} />

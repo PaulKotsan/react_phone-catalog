@@ -1,3 +1,4 @@
+import { useDevices } from '../../api';
 import { Device, ProductType } from '../types';
 
 // Really important tools
@@ -12,6 +13,12 @@ export function getDevicesFromCategory(
 
 export function getNewDevices(devicesFromAPI: Device[]): Device[] {
   return [...devicesFromAPI].filter(device => device.year === 2022);
+}
+
+export function useSomeCrazyMove(detailsId: string) {
+  const all = useDevices();
+
+  return all.devices.find(device => device.itemId === detailsId);
 }
 
 export function getHotPrices(devicesFromAPI: Device[]): Device[] {

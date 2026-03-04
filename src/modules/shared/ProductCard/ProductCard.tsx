@@ -30,6 +30,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ device }) => {
     quantity: 1,
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const handleAddToCart = () => {
     toggleCartItem(d);
   };
@@ -54,14 +61,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ device }) => {
       <NavLink
         to={`/${device.category}/${device.itemId}`}
         className={styles.productCard__Upper}
+        onClick={scrollToTop}
       >
         <div>
           <img src={device.image} className={styles.productCard__Image} />
         </div>
         <h3 className={styles.productCard__Title}>{device.name}</h3>
         <div className={styles.productCard__PriceContainer}>
-          <h2 className={styles.productCard__Price}>${device.price}</h2>
-          <h2 className={styles.productCard__Price}>${device.fullPrice}</h2>
+          {device.year === 2022 ? (
+            <h2 className={styles.productCard__Price}>${device.fullPrice}</h2>
+          ) : (
+            <>
+              <h2 className={styles.productCard__Price}>${device.price}</h2>
+              <h2 className={styles.productCard__Price}>${device.fullPrice}</h2>
+            </>
+          )}
         </div>
       </NavLink>
 

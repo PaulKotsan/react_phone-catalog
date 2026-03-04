@@ -36,15 +36,20 @@ export const Footer = () => {
           </NavLink>
         </div>
         <div className={styles.footer__Navigation}>
-          <NavLink
-            to="https://github.com/PaulKotsan/react_phone-catalog?tab=readme-ov-file"
+          <a
+            href="https://github.com/PaulKotsan/react_phone-catalog?tab=readme-ov-file"
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.footer__Link}
           >
             {t('footer.github')}
-          </NavLink>
-          <NavLink to="/contacts" className={styles.footer__Link}>
+          </a>
+          <a
+            href="mailto:pavlokotsan421@gmail.com://gmail.com"
+            className={styles.footer__Link}
+          >
             {t('footer.contacts')}
-          </NavLink>
+          </a>
           <NavLink to="/rights" className={styles.footer__Link}>
             {t('footer.rights')}
           </NavLink>

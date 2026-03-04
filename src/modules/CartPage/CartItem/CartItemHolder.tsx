@@ -66,7 +66,12 @@ export const CartItemHolder: React.FC<CartItemProps> = ({ item }) => {
             onClick={() => navigate(`/${item.category}/${item.id}`)}
           />
         </div>
-        <p className={styles.cartItem__Name}>{item.name}</p>
+        <p
+          className={styles.cartItem__Name}
+          onClick={() => navigate(`/${item.category}/${item.id}`)}
+        >
+          {item.name}
+        </p>
       </div>
       <div className={styles.cartItem__Controls}>
         <div className={styles.cartItem__Buttons}>

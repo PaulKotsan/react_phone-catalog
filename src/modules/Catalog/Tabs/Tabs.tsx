@@ -14,12 +14,16 @@ interface TabsProps {
 }
 
 export const Tabs: React.FC<TabsProps> = ({ allDevices }) => {
-  const [searchParams] = useSearchParams();
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const { type } = useParams<{ type: ProductType }>();
-  const { t } = useLanguage();
+  const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search');
   const sort = searchParams.get('sort');
+  const pageParam = searchParams.get('page');
+
+  const [currentPage, setCurrentPage] = useState<number>(() =>
+    pageParam ? +pageParam : 1,
+  );
+  const { type } = useParams<{ type: ProductType }>();
+  const { t } = useLanguage();
 
   const sortedDevices = [...allDevices].filter(
     device => device.category === type,
@@ -85,6 +89,16 @@ export const Tabs: React.FC<TabsProps> = ({ allDevices }) => {
   useEffect(() => {
     setCurrentPage(1);
   }, [type]);
+
+  useEffect(() => {
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev);
+
+      params.set('page', String(currentPage));
+
+      return params;
+    });
+  }, [currentPage, setSearchParams]);
 
   return (
     <div className={styles.tabs__Container}>
